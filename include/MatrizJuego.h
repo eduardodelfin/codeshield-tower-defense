@@ -19,6 +19,9 @@ public:
     void inicializar();
     void imprimir();
     NodoRuta* obtenerInicioRuta();
+    bool esCamino(int x, int y);
+    bool esBase(int x, int y);
+    void mostrarRuta();
 };
 
 #endif

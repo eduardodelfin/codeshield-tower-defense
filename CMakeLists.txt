@@ -10,6 +10,7 @@ set(CMAKE_CXX_COMPILER clang++)
 
 add_executable(CODESHIELD
     src/main.cpp
+    src/MatrizJuego.cpp
 )
 
 target_include_directories(CODESHIELD PRIVATE include)

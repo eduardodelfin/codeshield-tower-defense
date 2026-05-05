@@ -1,23 +1,25 @@
-#include <iostream>
+#include "../include/MatrizJuego.h"
 #include "GestorEnemigos.cpp"
+#include <iostream>
 
 int main() {
+    MatrizJuego mapa;
+    NodoRuta* inicioRuta;
     GestorEnemigos gestor;
 
-    gestor.insertarEnemigo(1, 100, 2, 0, 0);
-    gestor.insertarEnemigo(2, 120, 1, 3, 1);
-    gestor.insertarEnemigo(3, 80, 3, 5, 2);
+    mapa.inicializar();
+    inicioRuta = mapa.obtenerInicioRuta();
 
-    std::cout << "Lista inicial de enemigos:" << std::endl;
+    gestor.insertarEnemigo(1, 100, 1, 0, 0, inicioRuta);
+
+    std::cout << "Posicion inicial:" << std::endl;
     gestor.mostrarEnemigos();
 
-    std::cout << std::endl;
-    std::cout << "Eliminando al enemigo con id 2..." << std::endl;
-    gestor.eliminarEnemigo(2);
-
-    std::cout << std::endl;
-    std::cout << "Lista actualizada de enemigos:" << std::endl;
-    gestor.mostrarEnemigos();
+    for (int i = 0; i < 5; i++) {
+        gestor.moverEnemigos();
+        std::cout << "Movimiento " << i + 1 << ":" << std::endl;
+        gestor.mostrarEnemigos();
+    }
 
     return 0;
 }

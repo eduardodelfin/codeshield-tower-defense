@@ -85,3 +85,28 @@ void MatrizJuego::imprimir() {
 NodoRuta* MatrizJuego::obtenerInicioRuta() {
     return inicioRuta;
 }
+
+bool MatrizJuego::esCamino(int x, int y) {
+    return matriz[x][y] == 1;
+}
+
+bool MatrizJuego::esBase(int x, int y) {
+    return matriz[x][y] == 8;
+}
+
+void MatrizJuego::mostrarRuta() {
+    NodoRuta* actual = inicioRuta;
+
+    while (actual != 0) {
+        std::cout << "(" << actual->posicion.x
+                  << "," << actual->posicion.y << ")";
+
+        if (actual->siguiente != 0) {
+            std::cout << " -> ";
+        }
+
+        actual = actual->siguiente;
+    }
+
+    std::cout << std::endl;
+}

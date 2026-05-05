@@ -22,17 +22,23 @@ public:
         }
     }
 
-    void insertarEnemigo(int id, int vida, int velocidad, int x, int y) {
+    void insertarEnemigo(int id, int vida, int velocidad, int x, int y, NodoRuta* inicioRuta) {
         NodoEnemigo* nuevo = new NodoEnemigo;
 
         nuevo->id = id;
         nuevo->vida = vida;
         nuevo->velocidad = velocidad;
-        nuevo->posicion.x = x;
-        nuevo->posicion.y = y;
-        nuevo->objetivoRuta = 0;
+        nuevo->objetivoRuta = inicioRuta;
         nuevo->siguiente = 0;
         nuevo->anterior = cola;
+
+        if (inicioRuta != 0) {
+            nuevo->posicion.x = inicioRuta->posicion.x;
+            nuevo->posicion.y = inicioRuta->posicion.y;
+        } else {
+            nuevo->posicion.x = x;
+            nuevo->posicion.y = y;
+        }
 
         if (cabeza == 0) {
             cabeza = nuevo;
@@ -40,6 +46,20 @@ public:
         } else {
             cola->siguiente = nuevo;
             cola = nuevo;
+        }
+    }
+
+    void moverEnemigos() {
+        NodoEnemigo* actual = cabeza;
+
+        while (actual != 0) {
+            if (actual->objetivoRuta != 0 && actual->objetivoRuta->siguiente != 0) {
+                actual->objetivoRuta = actual->objetivoRuta->siguiente;
+                actual->posicion.x = actual->objetivoRuta->posicion.x;
+                actual->posicion.y = actual->objetivoRuta->posicion.y;
+            }
+
+            actual = actual->siguiente;
         }
     }
 
