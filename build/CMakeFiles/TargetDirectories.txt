@@ -1,0 +1,3 @@
+/home/edu/codeshield-tower-defense/build/CMakeFiles/CODESHIELD.dir
+/home/edu/codeshield-tower-defense/build/CMakeFiles/edit_cache.dir
+/home/edu/codeshield-tower-defense/build/CMakeFiles/rebuild_cache.dir
