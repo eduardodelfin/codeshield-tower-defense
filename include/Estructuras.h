@@ -23,6 +23,9 @@ struct NodoEnemigo {
 
     NodoEnemigo* siguiente;
     NodoEnemigo* anterior;
+
+    int vidaMaxima;
+    bool estaVivo;
 };
 
 struct Torre {
