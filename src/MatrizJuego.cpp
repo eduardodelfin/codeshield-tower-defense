@@ -1,4 +1,5 @@
 #include "../include/MatrizJuego.h"
+#include "../include/GestorTorres.h"
 #include <iostream>
 
 MatrizJuego::MatrizJuego() {
@@ -76,6 +77,24 @@ void MatrizJuego::imprimir() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             std::cout << matriz[i][j] << " ";
+        }
+
+        std::cout << std::endl;
+    }
+}
+
+void MatrizJuego::imprimirMapa(GestorTorres& gestorTorres) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (gestorTorres.hayTorreEn(i, j)) {
+                std::cout << "T ";
+            } else if (matriz[i][j] == 8) {
+                std::cout << "B ";
+            } else if (matriz[i][j] == 1) {
+                std::cout << ". ";
+            } else {
+                std::cout << "0 ";
+            }
         }
 
         std::cout << std::endl;

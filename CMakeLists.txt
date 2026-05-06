@@ -11,6 +11,8 @@ set(CMAKE_CXX_COMPILER clang++)
 add_executable(CODESHIELD
     src/main.cpp
     src/MatrizJuego.cpp
+    src/GestorTorres.cpp
+    src/GestorEnemigos.cpp
 )
 
 target_include_directories(CODESHIELD PRIVATE include)

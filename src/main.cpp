@@ -1,24 +1,26 @@
 #include "../include/MatrizJuego.h"
+#include "../include/GestorTorres.h"
 #include "GestorEnemigos.cpp"
 #include <iostream>
 
 int main() {
     MatrizJuego mapa;
+    GestorTorres gestorTorres(&mapa);
+    GestorEnemigos gestorEnemigos;
     NodoRuta* inicioRuta;
-    GestorEnemigos gestor;
 
     mapa.inicializar();
     inicioRuta = mapa.obtenerInicioRuta();
 
-    gestor.insertarEnemigo(1, 100, 1, 0, 0, inicioRuta);
+    gestorTorres.colocarTorre(2, 2, "Basica", 3, 20, 1);
+    gestorEnemigos.insertarEnemigo(1, 60, 1, 0, 0, inicioRuta);
 
-    std::cout << "Posicion inicial:" << std::endl;
-    gestor.mostrarEnemigos();
-
-    for (int i = 0; i < 5; i++) {
-        gestor.moverEnemigos();
-        std::cout << "Movimiento " << i + 1 << ":" << std::endl;
-        gestor.mostrarEnemigos();
+    for (int i = 0; i < 6; i++) {
+        std::cout << "Iteracion " << i + 1 << ":" << std::endl;
+        gestorEnemigos.mostrarEnemigos();
+        gestorTorres.actualizarTorres(gestorEnemigos);
+        gestorEnemigos.moverEnemigos();
+        std::cout << std::endl;
     }
 
     return 0;

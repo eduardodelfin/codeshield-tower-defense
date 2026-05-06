@@ -1,6 +1,8 @@
 #ifndef ESTRUCTURAS_H
 #define ESTRUCTURAS_H
 
+#include <string>
+
 struct Coordenada {
     int x;
     int y;
@@ -24,10 +26,18 @@ struct NodoEnemigo {
 };
 
 struct Torre {
-    int id;
-    int dano;
+    int fila;
+    int col;
+    std::string tipo;
     int rango;
-    Coordenada posicion;
+    int danio;
+    int cooldown;
+    int cooldownActual;
+};
+
+struct NodoTorre {
+    Torre* torre;
+    NodoTorre* siguiente;
 };
 
 struct NodoMejora {

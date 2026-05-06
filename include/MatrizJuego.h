@@ -3,6 +3,8 @@
 
 #include "Estructuras.h"
 
+class GestorTorres;
+
 class MatrizJuego {
 private:
     int matriz[10][10];
@@ -18,6 +20,7 @@ public:
 
     void inicializar();
     void imprimir();
+    void imprimirMapa(GestorTorres& gestorTorres);
     NodoRuta* obtenerInicioRuta();
     bool esCamino(int x, int y);
     bool esBase(int x, int y);

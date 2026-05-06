@@ -63,6 +63,28 @@ public:
         }
     }
 
+    NodoEnemigo* obtenerPrimerEnemigo() {
+        return cabeza;
+    }
+
+    void recibirDanio(NodoEnemigo* enemigo, int danio) {
+        if (enemigo == 0) {
+            return;
+        }
+
+        enemigo->vida = enemigo->vida - danio;
+
+        std::cout << "El enemigo " << enemigo->id
+                  << " recibio " << danio
+                  << " de danio. Vida restante: "
+                  << enemigo->vida << std::endl;
+
+        if (enemigo->vida <= 0) {
+            int idEnemigo = enemigo->id;
+            eliminarEnemigo(idEnemigo);
+        }
+    }
+
     void eliminarEnemigo(int id) {
         NodoEnemigo* actual = cabeza;
 
