@@ -8,6 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_CXX_COMPILER clang++)
 
+find_package(SFML 2.5 REQUIRED COMPONENTS graphics window system)
+
 add_executable(CODESHIELD
     src/main.cpp
     src/MatrizJuego.cpp
@@ -16,3 +18,10 @@ add_executable(CODESHIELD
 )
 
 target_include_directories(CODESHIELD PRIVATE include)
+
+target_link_libraries(CODESHIELD
+    PRIVATE
+    sfml-graphics
+    sfml-window
+    sfml-system
+)

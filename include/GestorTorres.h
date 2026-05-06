@@ -20,6 +20,7 @@ public:
     void mostrarTorres();
     void actualizarTorres(GestorEnemigos& gestorEnemigos);
     bool hayTorreEn(int fila, int col);
+    NodoTorre* obtenerPrimeraTorre();
 };
 
 #endif

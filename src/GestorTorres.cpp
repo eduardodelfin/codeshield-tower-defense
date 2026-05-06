@@ -1,5 +1,5 @@
 #include "../include/GestorTorres.h"
-#include "GestorEnemigos.cpp"
+#include "../include/GestorEnemigos.h"
 #include <iostream>
 
 // Inicializa la lista de torres vacia y guarda una referencia al mapa.
@@ -188,4 +188,8 @@ bool GestorTorres::hayTorreEn(int fila, int col) {
     }
 
     return false;
+}
+
+NodoTorre* GestorTorres::obtenerPrimeraTorre() {
+    return inicio;
 }
